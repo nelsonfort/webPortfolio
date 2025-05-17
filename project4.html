@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Smart Irrigation System - My Portfolio" data-es="Sistema Riego Inteligente - Mi Portafolio">Sistema Riego Inteligente - Mi Portafolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <h1 class="logo-text" data-en="My Portfolio" data-es="Mi Portafolio">Nelson Fortunatti</h1>
+            <ul>
+                <li><a href="index.html#cover" data-en="Home" data-es="Inicio">Inicio</a></li>
+                <li><a href="index.html#about" data-en="About Me" data-es="Sobre Mí">Sobre Mí</a></li>
+                <li><a href="index.html#projects" data-en="Projects" data-es="Proyectos">Proyectos</a></li>
+                <li><a href="index.html#contact" data-en="Contact" data-es="Contacto">Contacto</a></li>
+                <li id="lang-switcher"><a href="#">English</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="project-detail-section">
+            <div class="container">
+                <h2 data-en="Smart Farm Irrigation System" data-es="Sistema de Riego Inteligente para Granjas">Sistema de Riego Inteligente para Granjas</h2>
+
+                <div class="carousel-container">
+                    <div class="carousel-slides">
+                        <div class="carousel-slide" style="background-image: url('https://via.placeholder.com/800x500/2980b9/ffffff?text=Irrigation+System+Node');"></div>
+                        <div class="carousel-slide" style="background-image: url('https://via.placeholder.com/800x500/3498db/ffffff?text=Irrigation+Web+App');"></div>
+                        <div class="carousel-slide" style="background-image: url('https://via.placeholder.com/800x500/5dade2/ffffff?text=Irrigation+Actuator');"></div>
+                         <div class="carousel-slide" style="background-image: url('https://via.placeholder.com/800x500/85c1e9/ffffff?text=Irrigation+Dashboard');"></div>
+                        </div>
+                </div>
+
+                <div class="project-detail-description">
+                    <h3 data-en="About This Project" data-es="Sobre Este Proyecto">Sobre Este Proyecto</h3>
+                    <p data-en="This project delivers a comprehensive IoT-based solution for automating farm irrigation, designed to optimize water usage and crop health. The system comprises a family of distributed nodes equipped with sensors to monitor soil moisture and other environmental parameters. These nodes are built around the ESP32 microcontroller, utilizing FreeRTOS for efficient task management." data-es="Este proyecto ofrece una solución integral basada en IoT para automatizar el riego agrícola, diseñada para optimizar el uso del agua y la salud de los cultivos. El sistema comprende una familia de nodos distribuidos equipados con sensores para monitorear la humedad del suelo y otros parámetros ambientales. Estos nodos se construyen alrededor del microcontrolador ESP32, utilizando FreeRTOS para una gestión eficiente de tareas.">This project delivers a comprehensive IoT-based solution for automating farm irrigation, designed to optimize water usage and crop health. The system comprises a family of distributed nodes equipped with sensors to monitor soil moisture and other environmental parameters. These nodes are built around the ESP32 microcontroller, utilizing FreeRTOS for efficient task management.</p>
+                    <p data-en="Connectivity is flexible, supporting both long-range Lorawan communication (up to SF12 RX2) for wide area coverage and Cat-M1 cellular for reliable internet access. Devices communicate using MQTT protocol to a backend hosted on AWS, which includes a Linux virtual machine running ChirpStack (for Lorawan), Node-RED (for data processing and logic), and a custom WebApp for user interaction and control." data-es="La conectividad es flexible, soportando tanto comunicación de largo alcance Lorawan (hasta SF12 RX2) para cobertura de áreas amplias como celular Cat-M1 para acceso a internet fiable. Los dispositivos se comunican utilizando el protocolo MQTT a un backend alojado en AWS, que incluye una máquina virtual Linux ejecutando ChirpStack (para Lorawan), Node-RED (para procesamiento de datos y lógica) y una WebApp personalizada para interacción y control del usuario.">Connectivity is flexible, supporting both long-range Lorawan communication (up to SF12 RX2) for wide area coverage and Cat-M1 cellular for reliable internet access. Devices communicate using MQTT protocol to a backend hosted on AWS, which includes a Linux virtual machine running ChirpStack (for Lorawan), Node-RED (for data processing and logic) and a custom WebApp for user interaction and control.</p>
+                     <p data-en="The system controls various types of motorized gates to direct water flow to different sections of the farm based on sensor data and user-defined schedules. Control is possible remotely via the web application, or locally through an integrated user interface on the devices, providing robustness and ease of use." data-es="El sistema controla diversos tipos de compuertas motorizadas para dirigir el flujo de agua a diferentes secciones de la granja basándose en los datos de los sensores y los horarios definidos por el usuario. El control es posible de forma remota a través de la aplicación web, o localmente mediante una interfaz de usuario integrada en los dispositivos, proporcionando robustez y facilidad de uso.">The system controls various types of motorized gates to direct water flow to different sections of the farm based on sensor data and user-defined schedules. Control is possible remotely via the web application, or locally through an integrated user interface on the devices, providing robustness and ease of use.</p>
+                    <h3 data-en="System Components:" data-es="Componentes del Sistema:">Componentes del Sistema:</h3>
+                    <ul>
+                        <li data-en="ESP32-based sensor/actuator nodes." data-es="Nodos sensor/actuador basados en ESP32.">Nodos sensor/actuador basados en ESP32.</li>
+                        <li data-en="LoRaWAN and Cat-M1 communication." data-es="Comunicación LoRaWAN y Cat-M1.">Comunicación LoRaWAN y Cat-M1.</li>
+                        <li data-en="MQTT protocol for data transfer." data-es="Protocolo MQTT para transferencia de datos.">Protocolo MQTT para transferencia de datos.</li>
+                         <li data-en="AWS backend with ChirpStack, Node-RED, WebApp." data-es="Backend en AWS con ChirpStack, Node-RED, WebApp.">Backend en AWS con ChirpStack, Node-RED, WebApp.</li>
+                          <li data-en="Motorized gate control." data-es="Control de compuertas motorizadas.">Control de compuertas motorizadas.</li>
+                           <li data-en="Remote web and local user interfaces." data-es="Interfaces de usuario web remota y local.">Interfaces de usuario web remota y local.</li>
+                    </ul>
+                     </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><span data-en="&copy; 2025 My Name / Brand. All rights reserved." data-es="&copy; 2025 Mi Nombre / Marca. Todos los derechos reservados.">&copy; 2025 Mi Nombre / Marca. Todos los derechos reservados.</span></p>
+            <p><span data-en="Modern and functional web design." data-es="Diseño web moderno y funcional.">Diseño web moderno y funcional.</span></p>
+        </div>
+    </footer>
+
+    <script>
+         document.addEventListener('DOMContentLoaded', () => {
+             // --- Language Switcher Script ---
+             const htmlTag = document.documentElement;
+             const langSwitcherLink = document.getElementById('lang-switcher').querySelector('a');
+             const elementsToTranslate = document.querySelectorAll('[data-en], [data-es], [data-en-placeholder], [data-es-placeholder]');
+             const titleTag = document.querySelector('title');
+
+             function setLanguage(lang) {
+                 htmlTag.lang = lang;
+                 localStorage.setItem('lang', lang);
+
+                 if (lang === 'es') {
+                     langSwitcherLink.textContent = 'English';
+                 } else {
+                     langSwitcherLink.textContent = 'Español';
+                 }
+
+                 const titleEn = titleTag.getAttribute('data-en');
+                 const titleEs = titleTag.getAttribute('data-es');
+                 if (lang === 'en' && titleEn) {
+                     titleTag.textContent = titleEn;
+                 } else if (lang === 'es' && titleEs) {
+                     titleTag.textContent = titleEs;
+                 }
+
+
+                 elementsToTranslate.forEach(element => {
+                     const textEn = element.getAttribute('data-en');
+                     const textEs = element.getAttribute('data-es');
+                     if (lang === 'en' && textEn !== null) {
+                         element.textContent = textEn;
+                     } else if (lang === 'es' && textEs !== null) {
+                         element.textContent = textEs;
+                     }
+
+                     const placeholderEn = element.getAttribute('data-en-placeholder');
+                     const placeholderEs = element.getAttribute('data-es-placeholder');
+                     if (lang === 'en' && placeholderEn !== null) {
+                          element.placeholder = placeholderEn;
+                     } else if (lang === 'es' && placeholderEs !== null) {
+                          element.placeholder = placeholderEs;
+                     }
+                 });
+             }
+
+             const savedLang = localStorage.getItem('lang');
+             if (savedLang) {
+                 setLanguage(savedLang);
+             } else {
+                  setLanguage(htmlTag.lang);
+             }
+
+             langSwitcherLink.addEventListener('click', (event) => {
+                 event.preventDefault();
+                 const currentLang = htmlTag.lang;
+                 const newLang = currentLang === 'es' ? 'en' : 'es';
+                 setLanguage(newLang);
+             });
+
+             // --- Carousel Script ---
+             const carouselSlidesContainer = document.querySelector('.carousel-slides');
+             const slides = document.querySelectorAll('.carousel-slide');
+             const intervalTime = 3000; // 3 seconds
+             let slideInterval;
+             let currentIndex = 0;
+
+             if (slides.length === 0) {
+                 console.warn("No slides found for the carousel.");
+                 return;
+             }
+
+             function moveCarouselTo(index) {
+                  currentIndex = index;
+                  const offset = -currentIndex * 100;
+                  carouselSlidesContainer.style.transform = `translateX(${offset}%)`;
+             }
+
+             function nextSlide() {
+                 currentIndex++;
+                 if (currentIndex >= slides.length) {
+                      currentIndex = 0;
+                 }
+                 moveCarouselTo(currentIndex);
+             }
+
+             slideInterval = setInterval(nextSlide, intervalTime);
+
+             carouselSlidesContainer.parentElement.addEventListener('mouseenter', () => {
+                  clearInterval(slideInterval);
+             });
+
+             carouselSlidesContainer.parentElement.addEventListener('mouseleave', () => {
+                  slideInterval = setInterval(nextSlide, intervalTime);
+             });
+
+              moveCarouselTo(0);
+         });
+     </script>
+
+</body>
+</html>

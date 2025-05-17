@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="My Portfolio" data-es="Mi Portafolio">Mi Portafolio</title>
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+    <nav>
+        <div class="container">
+            <h1 class="logo-text" data-en="My Portfolio" data-es="Mi Portafolio">Nelson Fortunatti</h1>
+            <ul>
+                <li><a href="#cover" data-en="Home" data-es="Inicio">Inicio</a></li>
+                <li><a href="#about" data-en="About Me" data-es="Sobre Mí">Sobre Mí</a></li>
+                <li><a href="#projects" data-en="Projects" data-es="Proyectos">Proyectos</a></li>
+                <li><a href="#contact" data-en="Contact" data-es="Contacto">Contacto</a></li>
+                <li id="lang-switcher"><a href="#">English</a></li> </ul>
+        </div>
+    </nav>
+
+    <header id="cover">
+        <div class="cover-image-placeholder"></div>
+        <div class="content">
+            <h2 data-en="Welcome to my digital portfolio" data-es="Bienvenido a mi portfolio digital">Bienvenido a mi portfolio digital</h2>
+            <p data-en="Embedded Systems Developer, Hardware Engineer and Innovative Technological Solutions." data-es="Desarrollador de Sistemas Embebidos, Ingeniero de Hardware y Soluciones Tecnológicas Innovadoras.">Desarrollador de Sistemas Embebidos, Ingeniero de Hardware y Soluciones Tecnológicas Innovadoras.</p>
+            <a href="#projects" class="btn" data-en="See My Projects" data-es="Ver Mis Proyectos">Ver Mis Proyectos</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="about">
+            <div class="container container-flex">
+                <div class="about-content">
+                    <h2 class="section-title" data-en="About Me" data-es="Sobre Mí">Sobre Mí</h2>
+                    <p data-en="I am a passionate Electronics Engineer with a specialization and master's degree in Embedded Systems. I dedicate myself to the design and development of innovative technological solutions, covering everything from PCB hardware to firmware and connectivity." data-es="Soy un apasionado Ingeniero Electrónico con especialización y maestría en Sistemas Embebidos. Me dedico al diseño y desarrollo de soluciones tecnológicas innovadoras, abarcando desde el hardware PCB hasta el firmware y la conectividad.">Soy un apasionado Ingeniero Electrónico con especialización y maestría en Sistemas Embebidos. Me dedico al diseño y desarrollo de soluciones tecnológicas innovadoras, abarcando desde el hardware PCB hasta el firmware y la conectividad.</p>
+                    <p data-en="I offer consulting and development services in the areas of embedded systems, PCB design, IoT, and automation." data-es="Ofrezco servicios de consultoría y desarrollo en las áreas de sistemas embebidos, diseño de PCB, IoT y automatización.">Ofrezco servicios de consultoría y desarrollo en las áreas de sistemas embebidos, diseño de PCB, IoT y automatización.</p>
+                    <h3 data-en="Academic Background:" data-es="Formación Académica:">Formación Académica:</h3>
+                    <ul>
+                        <li data-en="2018: Bachelor's Degree in Electronics Engineering" data-es="2018: Título de Grado en Ingeniería Electrónica">2018: Título de Grado en Ingeniería Electrónica</li>
+                        <li data-en="2019: Postgraduate Specialist in Embedded Systems" data-es="2019: Postgrado Especialista en Sistemas Embebidos">2019: Postgrado Especialista en Sistemas Embebidos</li>
+                        <li data-en="2020: Completion of Master's in Embedded Systems" data-es="2020: Finalización de Máster en Sistemas Embebidos">2020: Finalización de Máster en Sistemas Embebidos</li>
+                    </ul>
+                </div>
+                <div class="about-image-placeholder"></div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title" data-en="My Projects" data-es="Mis Proyectos">Mis Proyectos</h2>
+                <div class="project-grid">
+                    <a href="project1.html" class="project-item">
+                        <div class="project-image-placeholder" style="background-image: url('images/project1/overview.jpg');"></div>
+                        <div class="project-info">
+                             <h3 data-en="Smart Battery Dev Board (6s)" data-es="Placa Desarrollo Batería (6s)">Placa Desarrollo Batería (6s)</h3>
+                            <p data-en="Development board to test and configure components for a 6s smart battery system, focusing on thermal performance and gauge IC setup." data-es="Placa de desarrollo para probar y configurar componentes de un sistema de batería inteligente 6s, enfocada en rendimiento térmico y configuración del IC de medición.">Development board to test and configure components for a 6s smart battery system, focusing on thermal performance and gauge IC setup.</p>
+                        </div>
+                    </a>
+
+                    <a href="project2.html" class="project-item">
+                        <div class="project-image-placeholder" style="background-image: url('images/project2/overview.jpg');"></div>
+                        <div class="project-info">
+                            <h3 data-en="Compact 6s Smart Battery PCB" data-es="PCB Batería Inteligente 6s Compacta">PCB Batería Inteligente 6s Compacta</h3>
+                            <p data-en="Multi-PCB design for a small form factor 6s smart battery system, integrating cell monitoring, balancing, and power stages." data-es="Diseño multi-PCB para un sistema de batería inteligente 6s de factor de forma pequeño, integrando monitoreo de celdas, balanceo y etapas de potencia.">Multi-PCB design for a small form factor 6s smart battery system, integrating cell monitoring, balancing, and power stages.</p>
+                        </div>
+                    </a>
+
+                    <a href="project3.html" class="project-item">
+                        <div class="project-image-placeholder" style="background-image: url('images/project3/overview.jpg');"></div>
+                        <div class="project-info">
+                             <h3 data-en="High Power Smart Battery PCB" data-es="PCB Batería Inteligente Alta Potencia">PCB Batería Inteligente Alta Potencia</h3>
+                            <p data-en="Designed for high-reliability systems (drones), supporting 14-16s configurations with high current handling (150A) and communication interfaces (DroneCan)." data-es="Diseñada para sistemas de alta fiabilidad (drones), soporta configuraciones 14-16s con manejo de alta corriente (150A) e interfaces de comunicación (DroneCan).">Designed for high-reliability systems (drones), supporting 14-16s configurations with high current handling (150A) and communication interfaces (DroneCan).</p>
+                        </div>
+                    </a>
+
+                    <a href="project4.html" class="project-item">
+                        <div class="project-image-placeholder" style="background-image: url('images/project4/overview.jpg');"></div>
+                        <div class="project-info">
+                            <h3 data-en="Smart Farm Irrigation System" data-es="Sistema Riego Inteligente Granjas">Sistema Riego Inteligente Granjas</h3>
+                            <p data-en="IoT system for farm irrigation, featuring ESP32, FreeRTOS, Lorawan/Cat-M1 communication, MQTT, AWS backend, and remote/local control." data-es="Sistema IoT para riego agrícola, con ESP32, FreeRTOS, comunicación Lorawan/Cat-M1, MQTT, backend en AWS y control remoto/local.">IoT system for farm irrigation, featuring ESP32, FreeRTOS, Lorawan/Cat-M1 communication, MQTT, AWS backend, and remote/local control.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title" data-en="Contact" data-es="Contacto">Contacto</h2>
+                <p class="contact-intro" data-en="If you are interested in my services or want to know more about my projects, feel free to contact me." data-es="Si estás interesado en mis servicios o quieres saber más sobre mis proyectos, no dudes en contactarme.">Si estás interesado en mis servicios o quieres saber más sobre mis proyectos, no dudes en contactarme.</p>
+                <form action="YOUR_FORM_SERVICE_ENDPOINT_URL" method="POST" class="contact-form">
+                    <div>
+                        <label for="name" data-en="Name:" data-es="Nombre:">Nombre:</label>
+                        <input type="text" id="name" name="name" required data-en-placeholder="Your Name" data-es-placeholder="Tu Nombre" placeholder="Tu Nombre">
+                    </div>
+                    <div>
+                        <label for="email" data-en="Email:" data-es="Email:">Email:</label>
+                        <input type="email" id="email" name="email" required data-en-placeholder="Your Email" data-es-placeholder="Tu Email" placeholder="Tu Email">
+                    </div>
+                    <div>
+                        <label for="message" data-en="Message:" data-es="Mensaje:">Mensaje:</label>
+                        <textarea id="message" name="message" rows="5" required data-en-placeholder="Your Message" data-es-placeholder="Tu Mensaje" placeholder="Tu Mensaje"></textarea>
+                    </div>
+                    <button type="submit" class="btn" data-en="Send Message" data-es="Enviar Mensaje">Enviar Mensaje</button>
+                </form>
+                <p style="margin-top: 30px; text-align:center; font-size: 1rem;">
+                    <span data-en="Or find me on:" data-es="O encuéntrame en:">O encuéntrame en:</span> <a href="https://www.linkedin.com/in/tu_perfil_linkedin/" target="_blank" style="color: #00aaff; text-decoration:none; font-weight:bold;">LinkedIn</a> (<span data-en="update this link!" data-es="¡actualiza este enlace!">¡actualiza este enlace!</span>)
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><span data-en="&copy; 2025 My Name / Brand. All rights reserved." data-es="&copy; 2025 Mi Nombre / Marca. Todos los derechos reservados.">&copy; 2025 Mi Nombre / Marca. Todos los derechos reservados.</span></p>
+            <p><span data-en="Modern and functional web design." data-es="Diseño web moderno y funcional.">Diseño web moderno y funcional.</span></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const htmlTag = document.documentElement;
+            const langSwitcherLink = document.getElementById('lang-switcher').querySelector('a');
+            const elementsToTranslate = document.querySelectorAll('[data-en], [data-es], [data-en-placeholder], [data-es-placeholder]');
+            const titleTag = document.querySelector('title');
+
+            function setLanguage(lang) {
+                htmlTag.lang = lang;
+                localStorage.setItem('lang', lang);
+
+                if (lang === 'es') {
+                    langSwitcherLink.textContent = 'English';
+                } else {
+                    langSwitcherLink.textContent = 'Español';
+                }
+
+                 const titleEn = titleTag.getAttribute('data-en');
+                 const titleEs = titleTag.getAttribute('data-es');
+                 if (lang === 'en' && titleEn) {
+                     titleTag.textContent = titleEn;
+                 } else if (lang === 'es' && titleEs) {
+                     titleTag.textContent = titleEs;
+                 }
+
+
+                elementsToTranslate.forEach(element => {
+                    const textEn = element.getAttribute('data-en');
+                    const textEs = element.getAttribute('data-es');
+                    if (lang === 'en' && textEn !== null) {
+                        element.textContent = textEn;
+                    } else if (lang === 'es' && textEs !== null) {
+                        element.textContent = textEs;
+                    }
+
+                    const placeholderEn = element.getAttribute('data-en-placeholder');
+                    const placeholderEs = element.getAttribute('data-es-placeholder');
+                    if (lang === 'en' && placeholderEn !== null) {
+                         element.placeholder = placeholderEn;
+                    } else if (lang === 'es' && placeholderEs !== null) {
+                         element.placeholder = placeholderEs;
+                    }
+                });
+            }
+
+            const savedLang = localStorage.getItem('lang');
+            if (savedLang) {
+                setLanguage(savedLang);
+            } else {
+                 setLanguage(htmlTag.lang);
+            }
+
+            langSwitcherLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                const currentLang = htmlTag.lang;
+                const newLang = currentLang === 'es' ? 'en' : 'es';
+                setLanguage(newLang);
+            });
+        });
+    </script>
+
+</body>
+</html>
