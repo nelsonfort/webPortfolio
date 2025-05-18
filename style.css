@@ -114,8 +114,10 @@ nav ul li a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #555 url('https://via.placeholder.com/1920x1080/2c3e50/ffffff?text=Coloca+aqui+tu+imagen+de+portada+(1920x1080)') center center/cover no-repeat;
+    /* Placeholder URL for initial load, actual image via inline style in HTML */
+    background: #555 url('https://via.placeholder.com/1920x1080/2c3e50/ffffff?text=Cover+Image+(1920x1080)') center center/contain no-repeat;
     z-index: 0;
+    background-color: #2c3e50; /* Fill color if image is contained and smaller */
 }
 
 #cover .content {
@@ -214,9 +216,11 @@ section h2.section-title::after {
     flex: 1;
     min-width: 250px;
     height: 350px;
-    background: #ccc url('https://via.placeholder.com/400x350/cccccc/969696.png?text=Imagen+Personal+(400x350)') center center/cover no-repeat;
+    /* Placeholder URL for initial load, actual image via inline style in HTML */
+    background: #ccc url('https://via.placeholder.com/400x350/cccccc/969696.png?text=About+Me+Image+(400x350)') center center/contain no-repeat;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #ccc; /* Fill color if image is contained and smaller */
 }
 
 #about h3 {
@@ -269,15 +273,16 @@ section h2.section-title::after {
 .project-image-placeholder {
     width: 100%;
     height: 200px; /* Reduced height for overview */
-    background-color: #ddd;
+    background-color: #ddd; /* This will be visible if image is contained */
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
     font-size: 1.1rem;
     text-align: center;
-    background-size: cover;
+    background-size: contain; /* CHANGED from cover to contain */
     background-position: center;
+    background-repeat: no-repeat; /* Add this to prevent tiling */
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
@@ -347,7 +352,7 @@ section h2.section-title::after {
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     aspect-ratio: 16 / 9; /* Maintain aspect ratio */
-    background-color: #eee; /* Placeholder background */
+    background-color: #eee; /* Placeholder background if images are smaller */
 }
 
 .carousel-slides {
@@ -360,23 +365,24 @@ section h2.section-title::after {
 .carousel-slide {
     min-width: 100%; /* Each slide takes full width */
     height: 100%;
-    background-size: cover;
+    background-size: contain; /* CHANGED from cover to contain */
     background-position: center;
-    display: flex; /* Center placeholder text/image */
+    background-repeat: no-repeat; /* Added */
+    display: flex; /* Center placeholder text/image if needed */
     align-items: center;
     justify-content: center;
-    color: #fff;
-    font-size: 2em;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-    /* If using img tags instead of background-image, remove flex properties */
+    color: #fff; /* For any text overlay if image is missing */
+    font-size: 2em; /* For any text overlay */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* For any text overlay */
+    cursor: pointer; /* Make slides clickable for modal */
 }
 /* If using img tags inside carousel-slide */
 .carousel-slide img {
     display: block; /* Ensure img behaves well */
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cover the container */
-    pointer-events: none; /* Prevent image drag */
+    object-fit: contain; /* CHANGED from cover to contain */
+    pointer-events: none; /* Prevent image drag if slide itself handles click */
 }
 
 
@@ -473,6 +479,77 @@ footer p:last-child {
     opacity: 0.8;
 }
 
+/* Modal (Lightbox) Styles - ADDED */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Sit on top */
+    padding-top: 50px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px; /* Adjusted for better viewing */
+    max-height: 85vh; /* Ensure it fits viewport height */
+    object-fit: contain; /* Ensure the full image is visible */
+}
+
+#caption { /* If you decide to use captions */
+    margin: 10px auto 0;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: auto; /* Auto height for caption */
+}
+
+/* Close Button */
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)}
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -534,8 +611,10 @@ footer p:last-child {
         width: 100%;
         max-width: 250px; /* Adjusted size */
         height: 250px; /* Adjusted size */
-        background: #ccc url('images/about-me.jpg') center center/cover no-repeat; /* Updated path */
+        /* Ensure this uses contain as well if overridden for mobile */
+        background: #ccc url('images/about-me.jpg') center center/contain no-repeat; /* Updated path and size */
         align-self: center;
+        background-color: #ccc; /* Fill color if image is contained and smaller */
     }
 
     .project-grid {
@@ -561,6 +640,12 @@ footer p:last-child {
      .project-detail-description h3 {
          font-size: 1.4rem;
      }
+
+    /* Modal Content on smaller screens */
+    .modal-content {
+        width: 95%;
+        max-width: 95%;
+    }
 }
 
 /* Smooth Scroll & Nav Offset */

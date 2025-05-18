@@ -9,7 +9,7 @@
 <body>
     <nav>
         <div class="container">
-            <h1 class="logo-text" data-en="My Portfolio" data-es="Mi Portafolio">Nelson Fortunatti</h1>
+            <h1 class="logo-text" data-en="Nelson Fortunatti" data-es="Nelson Fortunatti">Nelson Fortunatti</h1>
             <ul>
                 <li><a href="index.html#cover" data-en="Home" data-es="Inicio">Inicio</a></li>
                 <li><a href="index.html#about" data-en="About Me" data-es="Sobre Mí">Sobre Mí</a></li>
@@ -33,6 +33,8 @@
                         <div class="carousel-slide" style="background-image: url('images/project2/img4.jpg');"></div>
                         <div class="carousel-slide" style="background-image: url('images/project2/img5.jpg');"></div>
                         <div class="carousel-slide" style="background-image: url('images/project2/img6.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/project2/img7.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/project2/img8.jpg');"></div>
                     </div>
                 </div>
 
@@ -53,10 +55,16 @@
 
     <footer>
         <div class="container">
-            <p><span data-en="&copy; 2025 My Name / Brand. All rights reserved." data-es="&copy; 2025 Mi Nombre / Marca. Todos los derechos reservados.">&copy; 2025 Mi Nombre / Marca. Todos los derechos reservados.</span></p>
-            <p><span data-en="Modern and functional web design." data-es="Diseño web moderno y funcional.">Diseño web moderno y funcional.</span></p>
+            <p><span data-en="&copy; 2025 Nelson Fortunatti. All rights reserved." data-es="&copy; 2025 Nelson Fortunatti. Todos los derechos reservados.">&copy; 2025 Nelson Fortunatti. Todos los derechos reservados.</span></p>
+            <p><span data-en="nelsonfortunatti@gmail.com" data-es="nelsonfortunatti@gmail.com">nelsonfortunatti@gmail.com</span></p>
         </div>
     </footer>
+
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption"></div>
+    </div>
 
     <script>
          document.addEventListener('DOMContentLoaded', () => {
@@ -108,7 +116,7 @@
              if (savedLang) {
                  setLanguage(savedLang);
              } else {
-                  setLanguage(htmlTag.lang);
+                  setLanguage(htmlTag.lang || 'es'); // Default to 'es' if not set
              }
 
              langSwitcherLink.addEventListener('click', (event) => {
@@ -120,41 +128,69 @@
 
              // --- Carousel Script ---
              const carouselSlidesContainer = document.querySelector('.carousel-slides');
-             const slides = document.querySelectorAll('.carousel-slide');
-             const intervalTime = 2000; // 2 seconds
+             const slides = document.querySelectorAll('.carousel-slide'); // Re-select
+             const intervalTime = 2000;
              let slideInterval;
              let currentIndex = 0;
 
-             if (slides.length === 0) {
-                 console.warn("No slides found for the carousel.");
-                 return;
-             }
-
-             function moveCarouselTo(index) {
-                  currentIndex = index;
-                  const offset = -currentIndex * 100;
-                  carouselSlidesContainer.style.transform = `translateX(${offset}%)`;
-             }
-
-             function nextSlide() {
-                 currentIndex++;
-                 if (currentIndex >= slides.length) {
-                      currentIndex = 0;
+             if (carouselSlidesContainer && slides.length > 0) {
+                 function moveCarouselTo(index) {
+                      currentIndex = index;
+                      const offset = -currentIndex * 100;
+                      carouselSlidesContainer.style.transform = `translateX(${offset}%)`;
                  }
-                 moveCarouselTo(currentIndex);
+
+                 function nextSlide() {
+                     currentIndex++;
+                     if (currentIndex >= slides.length) {
+                          currentIndex = 0;
+                     }
+                     moveCarouselTo(currentIndex);
+                 }
+
+                 slideInterval = setInterval(nextSlide, intervalTime);
+
+                 carouselSlidesContainer.parentElement.addEventListener('mouseenter', () => {
+                      clearInterval(slideInterval);
+                 });
+
+                 carouselSlidesContainer.parentElement.addEventListener('mouseleave', () => {
+                      slideInterval = setInterval(nextSlide, intervalTime);
+                 });
+                 moveCarouselTo(0);
+             } else if (slides.length > 0) {
+                 console.warn("Carousel slides found, but container .carousel-slides is missing.");
+             } else {
+                 console.warn("No slides found for the carousel.");
              }
 
-             slideInterval = setInterval(nextSlide, intervalTime);
+            // --- Image Modal Script ---
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
 
-             carouselSlidesContainer.parentElement.addEventListener('mouseenter', () => {
-                  clearInterval(slideInterval);
-             });
+            document.querySelectorAll('.carousel-slide').forEach(slide => {
+                slide.onclick = function(){
+                    if (modal && modalImg) {
+                        modal.style.display = "block";
+                        let style = window.getComputedStyle(this);
+                        let bgImage = style.getPropertyValue('background-image');
+                        modalImg.src = bgImage.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+                    }
+                }
+            });
 
-             carouselSlidesContainer.parentElement.addEventListener('mouseleave', () => {
-                  slideInterval = setInterval(nextSlide, intervalTime);
-             });
+            const closeModalButton = document.querySelector(".close-modal");
+            if (closeModalButton && modal) {
+                closeModalButton.onclick = function() {
+                    modal.style.display = "none";
+                }
+            }
 
-              moveCarouselTo(0);
+            window.onclick = function(event) {
+                if (event.target == modal && modal) {
+                    modal.style.display = "none";
+                }
+            }
          });
      </script>
 
