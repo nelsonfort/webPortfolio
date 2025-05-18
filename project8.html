@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Ticks Repellent - My Portfolio" data-es="Repelente de Garrapatas - Mi Portafolio">Repelente de Garrapatas - Mi Portafolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <h1 class="logo-text" data-en="Nelson Fortunatti" data-es="Nelson Fortunatti">Nelson Fortunatti</h1>
+            <ul>
+                <li><a href="index.html#cover" data-en="Home" data-es="Inicio">Inicio</a></li>
+                <li><a href="index.html#about" data-en="About Me" data-es="Sobre Mí">Sobre Mí</a></li>
+                <li><a href="index.html#projects" data-en="Projects" data-es="Proyectos">Proyectos</a></li>
+                <li><a href="index.html#contact" data-en="Contact" data-es="Contacto">Contacto</a></li>
+                <li id="lang-switcher"><a href="#">English</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="project-detail-section">
+            <div class="container">
+                <h2 data-en="Ticks Repellent" data-es="Repelente de Garrapatas">Repelente de Garrapatas</h2>
+
+                <div class="carousel-container">
+                    <div class="carousel-slides">
+                        <div class="carousel-slide" style="background-image: url('images/project8/img1.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/project8/img2.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/project8/img3.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/project8/img4.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/project8/img5.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/project8/img6.jpg');"></div>
+                        <div class="carousel-slide" style="background-image: url('images/project8/img7.jpg');"></div>
+                        </div>
+                </div>
+
+                <div class="project-detail-description">
+                    <h3 data-en="About This Project" data-es="Sobre Este Proyecto">Sobre Este Proyecto</h3>
+                    <p data-en="This device was a prototype for a wearable device designed to prevent tick human infections in US forests. The concept, from an MIT researcher, aims to create a revolutionary device to help people and the US Army combat tick-borne diseases. The device consists of receivers containing repellent that can be automatically activated by a microcontroller. The microcontroller can communicate with a smartphone app to activate the receivers at a given time or manually. The receivers are activated by applying a voltage pulse to a membrane, which breaks the membrane and releases the repellent. It is a wearable device designed to be worn on the ankle." data-es="Este dispositivo fue un prototipo de un dispositivo usable diseñado para prevenir infecciones humanas por garrapatas en los bosques de EE. UU. El concepto, de un investigador del MIT, tiene como objetivo crear un dispositivo revolucionario para ayudar a las personas y al ejército de EE. UU. a combatir las enfermedades transmitidas por garrapatas. El dispositivo consta de receptores que contienen repelente y que pueden ser activados automáticamente por un microcontrolador. El microcontrolador puede comunicarse con una aplicación de smartphone para activar los receptores en un momento dado o manualmente. Los receptores se activan aplicando un pulso de voltaje a una membrana, que rompe la membrana y libera el repelente. Es un dispositivo usable diseñado para ser llevado en el tobillo.">This device was a prototype for a wearable device designed to prevent tick human infections in US forests. The concept, from an MIT researcher, aims to create a revolutionary device to help people and the US Army combat tick-borne diseases. The device consists of receivers containing repellent that can be automatically activated by a microcontroller. The microcontroller can communicate with a smartphone app to activate the receivers at a given time or manually. The receivers are activated by applying a voltage pulse to a membrane, which breaks the membrane and releases the repellent. It is a wearable device designed to be worn on the ankle.</p>
+                    <h3 data-en="Key Aspects:" data-es="Aspectos Clave:">Aspectos Clave:</h3>
+                    <ul>
+                        <li data-en="Wearable Prototype for Tick Repellent" data-es="Prototipo Usable para Repelente de Garrapatas">Prototipo Usable para Repelente de Garrapatas</li>
+                        <li data-en="Microcontroller Activated Repellent Release" data-es="Liberación de Repelente Activada por Microcontrolador">Liberación de Repelente Activada por Microcontrolador</li>
+                        <li data-en="Smartphone App Communication" data-es="Comunicación con Aplicación de Smartphone">Comunicación con Aplicación de Smartphone</li>
+                        <li data-en="Voltage Pulse Activation Mechanism" data-es="Mecanismo de Activación por Pulso de Voltaje">Mecanismo de Activación por Pulso de Voltaje</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><span data-en="&copy; 2025 Nelson Fortunatti. All rights reserved." data-es="&copy; 2025 Nelson Fortunatti. Todos los derechos reservados.">&copy; 2025 Nelson Fortunatti. Todos los derechos reservados.</span></p>
+            <p><span data-en="nelsonfortunatti@gmail.com" data-es="nelsonfortunatti@gmail.com">nelsonfortunatti@gmail.com</span></p>
+        </div>
+    </footer>
+
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption"></div>
+    </div>
+
+    <script>
+         document.addEventListener('DOMContentLoaded', () => {
+             // --- Language Switcher Script ---
+             const htmlTag = document.documentElement;
+             const langSwitcherLink = document.getElementById('lang-switcher').querySelector('a');
+             const elementsToTranslate = document.querySelectorAll('[data-en], [data-es], [data-en-placeholder], [data-es-placeholder]');
+             const titleTag = document.querySelector('title');
+
+             function setLanguage(lang) {
+                 htmlTag.lang = lang;
+                 localStorage.setItem('lang', lang);
+
+                 if (lang === 'es') {
+                     langSwitcherLink.textContent = 'English';
+                 } else {
+                     langSwitcherLink.textContent = 'Español';
+                 }
+
+                 const titleEn = titleTag.getAttribute('data-en');
+                 const titleEs = titleTag.getAttribute('data-es');
+                 if (lang === 'en' && titleEn) {
+                     titleTag.textContent = titleEn;
+                 } else if (lang === 'es' && titleEs) {
+                     titleTag.textContent = titleEs;
+                 }
+
+
+                 elementsToTranslate.forEach(element => {
+                     const textEn = element.getAttribute('data-en');
+                     const textEs = element.getAttribute('data-es');
+                     if (lang === 'en' && textEn !== null) {
+                         element.textContent = textEn;
+                     } else if (lang === 'es' && textEs !== null) {
+                         element.textContent = textEs;
+                     }
+
+                     const placeholderEn = element.getAttribute('data-en-placeholder');
+                     const placeholderEs = element.getAttribute('data-es-placeholder');
+                     if (lang === 'en' && placeholderEn !== null) {
+                          element.placeholder = placeholderEn;
+                     } else if (lang === 'es' && placeholderEs !== null) {
+                          element.placeholder = placeholderEs;
+                     }
+                 });
+             }
+
+             const savedLang = localStorage.getItem('lang');
+             if (savedLang) {
+                 setLanguage(savedLang);
+             } else {
+                  setLanguage(htmlTag.lang || 'es'); // Default to 'es' if not set
+             }
+
+             langSwitcherLink.addEventListener('click', (event) => {
+                 event.preventDefault();
+                 const currentLang = htmlTag.lang;
+                 const newLang = currentLang === 'es' ? 'en' : 'es';
+                 setLanguage(newLang);
+             });
+
+             // --- Carousel Script ---
+             const carouselSlidesContainer = document.querySelector('.carousel-slides');
+             const slides = document.querySelectorAll('.carousel-slide'); // Re-select
+             const intervalTime = 2000;
+             let slideInterval;
+             let currentIndex = 0;
+
+             if (carouselSlidesContainer && slides.length > 0) {
+                 function moveCarouselTo(index) {
+                      currentIndex = index;
+                      const offset = -currentIndex * 100;
+                      carouselSlidesContainer.style.transform = `translateX(${offset}%)`;
+                 }
+
+                 function nextSlide() {
+                     currentIndex++;
+                     if (currentIndex >= slides.length) {
+                          currentIndex = 0;
+                     }
+                     moveCarouselTo(currentIndex);
+                 }
+
+                 slideInterval = setInterval(nextSlide, intervalTime);
+
+                 carouselSlidesContainer.parentElement.addEventListener('mouseenter', () => {
+                      clearInterval(slideInterval);
+                 });
+
+                 carouselSlidesContainer.parentElement.addEventListener('mouseleave', () => {
+                      slideInterval = setInterval(nextSlide, intervalTime);
+                 });
+                 moveCarouselTo(0);
+             } else if (slides.length > 0) {
+                 console.warn("Carousel slides found, but container .carousel-slides is missing.");
+             } else {
+                 console.warn("No slides found for the carousel.");
+             }
+
+            // --- Image Modal Script ---
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+
+            document.querySelectorAll('.carousel-slide').forEach(slide => {
+                slide.onclick = function(){
+                    if (modal && modalImg) {
+                        modal.style.display = "block";
+                        let style = window.getComputedStyle(this);
+                        let bgImage = style.getPropertyValue('background-image');
+                        modalImg.src = bgImage.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+                    }
+                }
+            });
+
+            const closeModalButton = document.querySelector(".close-modal");
+            if (closeModalButton && modal) {
+                closeModalButton.onclick = function() {
+                    modal.style.display = "none";
+                }
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal && modal) {
+                    modal.style.display = "none";
+                }
+            }
+         });
+     </script>
+
+</body>
+</html>
