@@ -320,19 +320,108 @@ section h2.section-title::after {
 .project-detail-description ul { list-style: disc; padding-left: 20px; margin-bottom: 15px; }
 
 /* Contact Section */
-#contact { background-color: #f4f4f4; }
-#contact .container { max-width: 700px; }
-#contact p.contact-intro { text-align: center; font-size: 1.1rem; margin-bottom: 30px; }
-.contact-form label { display: block; margin-bottom: 8px; font-weight: bold; color: #555; }
-.contact-form input[type="text"], .contact-form input[type="email"], .contact-form textarea {
-    width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd;
-    border-radius: 5px; font-size: 1rem; background-color: #fff;
+#contact {
+    background-color: #f4f4f4;
+    text-align: center; /* Center the content of the contact section */
 }
-.contact-form input[type="text"]:focus, .contact-form input[type="email"]:focus, .contact-form textarea:focus {
-    border-color: #00aaff; outline: none; box-shadow: 0 0 5px rgba(0, 170, 255, 0.3);
+
+#contact .container {
+    max-width: 700px;
 }
-.contact-form textarea { resize: vertical; min-height: 120px; }
-.contact-form input[type="text"]::placeholder, .contact-form input[type="email"]::placeholder, .contact-form textarea::placeholder { color: #aaa; }
+
+#contact p.contact-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 40px; /* Increased margin */
+    color: #555;
+    line-height: 1.7;
+}
+
+.contact-options {
+    display: flex;
+    justify-content: center; /* Center the buttons */
+    gap: 20px; /* Space between buttons */
+    margin-bottom: 30px;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.contact-option {
+    display: inline-flex; /* Align icon and text nicely */
+    align-items: center;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+    border: 2px solid transparent; /* For a nice hover/focus effect */
+    min-width: 220px; /* Ensure buttons have a decent minimum width */
+    justify-content: center; /* Center content within the button */
+}
+
+.contact-icon {
+    width: 24px; /* Adjust size as needed */
+    height: 24px;
+    margin-right: 10px;
+}
+
+.contact-option.linkedin {
+    background-color: #0077B5; /* LinkedIn blue */
+    color: #fff;
+}
+.contact-option.linkedin:hover,
+.contact-option.linkedin:focus {
+    background-color: #005e8e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 119, 181, 0.3);
+}
+
+.contact-option.email {
+    background-color: #555; /* A neutral dark grey */
+    color: #fff;
+}
+.contact-option.email:hover,
+.contact-option.email:focus {
+    background-color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(85, 85, 85, 0.3);
+}
+
+/* For accessibility: better focus styles */
+.contact-option:focus {
+    outline: none;
+    border-color: #00aaff; /* Your accent color */
+}
+
+p.contact-email-direct {
+    margin-top: 40px;
+    font-size: 1rem;
+    color: #666;
+}
+p.contact-email-address {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #0077cc; /* Make email address stand out */
+    margin-top: 5px;
+    word-break: break-all; /* Prevent overflow on small screens */
+}
+
+
+/* Responsive adjustments for contact options if needed */
+@media (max-width: 520px) { /* Breakpoint when buttons might get too squeezed */
+    .contact-options {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center; /* Center stacked buttons */
+    }
+    .contact-option {
+        width: 100%; /* Make buttons take full available width */
+        max-width: 300px; /* But not too wide on slightly larger small screens */
+        margin-bottom: 15px; /* Space between stacked buttons */
+    }
+    .contact-option:last-child {
+        margin-bottom: 0;
+    }
+}
 
 /* Footer */
 footer { background: #333; color: #fff; text-align: center; padding: 1.5rem 0; }
