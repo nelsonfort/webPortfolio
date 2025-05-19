@@ -10,7 +10,10 @@
     <nav>
         <div class="container">
             <h1 class="logo-text" data-en="Nelson Fortunatti" data-es="Nelson Fortunatti">Nelson Fortunatti</h1>
-            <ul>
+            <button class="nav-toggle" aria-label="toggle navigation" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            <ul id="primary-navigation">
                 <li><a href="index.html#cover" data-en="Home" data-es="Inicio">Inicio</a></li>
                 <li><a href="index.html#about" data-en="About Me" data-es="Sobre Mí">Sobre Mí</a></li>
                 <li><a href="index.html#projects" data-en="Projects" data-es="Proyectos">Proyectos</a></li>
@@ -72,61 +75,220 @@
         <a class="next-modal">&#10095;</a>
         <div id="caption"></div>
     </div>
-
     <script>
          document.addEventListener('DOMContentLoaded', () => {
-             // --- Language Switcher Script ---
-             const htmlTag = document.documentElement;
-             const langSwitcherLink = document.getElementById('lang-switcher').querySelector('a');
-             const elementsToTranslate = document.querySelectorAll('[data-en], [data-es], [data-en-placeholder], [data-es-placeholder]');
-             const titleTag = document.querySelector('title');
+            // --- Hamburger Navigation Toggle ---
+            const navToggle = document.querySelector('.nav-toggle');
+            const primaryNav = document.getElementById('primary-navigation');
 
-             function setLanguage(lang) {
-                 htmlTag.lang = lang;
-                 localStorage.setItem('lang', lang);
+            if (navToggle && primaryNav) {
+                navToggle.addEventListener('click', () => {
+                    primaryNav.classList.toggle('nav-ul-active');
+                    navToggle.classList.toggle('is-active');
 
-                 if (lang === 'es') {
-                     langSwitcherLink.textContent = 'English';
-                 } else {
-                     langSwitcherLink.textContent = 'Español';
-                 }
+                    // ARIA attribute for accessibility
+                    const isExpanded = primaryNav.classList.contains('nav-ul-active');
+                    navToggle.setAttribute('aria-expanded', isExpanded);
+                });
 
-                 const titleEn = titleTag.getAttribute('data-en');
-                 const titleEs = titleTag.getAttribute('data-es');
-                 if (lang === 'en' && titleEn) {
-                     titleTag.textContent = titleEn;
-                 } else if (lang === 'es' && titleEs) {
-                     titleTag.textContent = titleEs;
-                 }
+                // Optional: Close menu when a navigation link is clicked (useful for single-page anchors)
+                const navLinks = primaryNav.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        // Check if the menu is open (especially relevant for mobile)
+                        if (window.innerWidth <= 768 && primaryNav.classList.contains('nav-ul-active')) {
+                            primaryNav.classList.remove('nav-ul-active');
+                            navToggle.classList.remove('is-active');
+                            navToggle.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                });
+            }
 
-                 elementsToTranslate.forEach(element => {
-                     const textEn = element.getAttribute('data-en');
-                     const textEs = element.getAttribute('data-es');
-                     if (lang === 'en' && textEn !== null) {
-                         element.textContent = textEn;
-                     } else if (lang === 'es' && textEs !== null) {
-                         element.textContent = textEs;
-                     }
+            // --- Language Switcher Script ---
+            const htmlTag = document.documentElement;
+            const langSwitcherListItem = document.getElementById('lang-switcher'); // Get the LI
+            let langSwitcherLink = null;
+            if (langSwitcherListItem) {
+                langSwitcherLink = langSwitcherListItem.querySelector('a'); // Get the A inside LI
+            }
+            const elementsToTranslate = document.querySelectorAll('[data-en], [data-es], [data-en-placeholder], [data-es-placeholder]');
+            const titleTag = document.querySelector('title');
 
-                     const placeholderEn = element.getAttribute('data-en-placeholder');
-                     const placeholderEs = element.getAttribute('data-es-placeholder');
-                     if (lang === 'en' && placeholderEn !== null) {
-                          element.placeholder = placeholderEn;
-                     } else if (lang === 'es' && placeholderEs !== null) {
-                          element.placeholder = placeholderEs;
-                     }
-                 });
-             }
+            function setLanguage(lang) {
+                htmlTag.lang = lang;
+                localStorage.setItem('lang', lang);
 
-             const savedLang = localStorage.getItem('lang');
-             if (savedLang) {
-                 setLanguage(savedLang);
-             } else {
-                  setLanguage(htmlTag.lang || 'es'); // Default to 'es' if not set
-             }
+                if (langSwitcherLink) { // Check if link exists
+                    if (lang === 'es') {
+                        langSwitcherLink.textContent = 'English';
+                    } else {
+                        langSwitcherLink.textContent = 'Español';
+                    }
+                }
 
-             langSwitcherLink.addEventListener('click', (event) => {
-                 event.preventDefault();
+                if (titleTag) { // Check if titleTag exists
+                    const titleEn = titleTag.getAttribute('data-en');
+                    const titleEs = titleTag.getAttribute('data-es');
+                    if (lang === 'en' && titleEn) {
+                        titleTag.textContent = titleEn;
+                    } else if (lang === 'es' && titleEs) {
+                        titleTag.textContent = titleEs;
+                    }
+                }
+
+
+                elementsToTranslate.forEach(element => {
+                    const textEn = element.getAttribute('data-en');
+                    const textEs = element.getAttribute('data-es');
+                    if (lang === 'en' && textEn !== null) {
+                        element.textContent = textEn;
+                    } else if (lang === 'es' && textEs !== null) {
+                        element.textContent = textEs;
+                    }
+
+                    const placeholderEn = element.getAttribute('data-en-placeholder');
+                    const placeholderEs = element.getAttribute('data-es-placeholder');
+                    if (lang === 'en' && placeholderEn !== null) {
+                        element.placeholder = placeholderEn;
+                    } else if (lang === 'es' && placeholderEs !== null) {
+                        element.placeholder = placeholderEs;
+                    }
+                });
+            }
+
+            const savedLang = localStorage.getItem('lang');
+            if (savedLang) {
+                setLanguage(savedLang);
+            } else {
+                setLanguage(htmlTag.lang || 'es'); // Default to 'es' if not set, or to HTML lang attr
+            }
+
+            if (langSwitcherLink) { // Check if link exists
+                langSwitcherLink.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const currentLang = htmlTag.lang;
+                    const newLang = currentLang === 'es' ? 'en' : 'es';
+                    setLanguage(newLang);
+                });
+            }
+
+            // --- Carousel Script (Only runs if carousel elements are present) ---
+            const carouselSlidesContainer = document.querySelector('.carousel-slides');
+            if (carouselSlidesContainer) {
+                const slides = document.querySelectorAll('.carousel-slide');
+                const intervalTime = 3000;
+                let slideInterval;
+                let currentIndex = 0;
+
+                if (slides.length > 0) {
+                    function moveCarouselTo(index) {
+                        currentIndex = index;
+                        const offset = -currentIndex * 100;
+                        carouselSlidesContainer.style.transform = `translateX(${offset}%)`;
+                    }
+
+                    function nextSlide() {
+                        currentIndex++;
+                        if (currentIndex >= slides.length) {
+                            currentIndex = 0;
+                        }
+                        moveCarouselTo(currentIndex);
+                    }
+
+                    slideInterval = setInterval(nextSlide, intervalTime);
+
+                    const carouselContainer = carouselSlidesContainer.parentElement;
+                    if (carouselContainer) {
+                        carouselContainer.addEventListener('mouseenter', () => {
+                            clearInterval(slideInterval);
+                        });
+
+                        carouselContainer.addEventListener('mouseleave', () => {
+                            slideInterval = setInterval(nextSlide, intervalTime);
+                        });
+                    }
+                    moveCarouselTo(0); // Initialize carousel position
+                }
+            }
+
+            // --- Image Modal Script (Only runs if modal elements are present) ---
+            const modal = document.getElementById("imageModal");
+            if (modal) {
+                modal.style.display = "none"; // Ensure it's hidden initially
+                const modalImg = document.getElementById("modalImage");
+                const prevModalButton = document.querySelector(".prev-modal");
+                const nextModalButton = document.querySelector(".next-modal");
+                // const captionText = document.getElementById("caption"); // Uncomment if you implement captions
+
+                let currentModalImageIndex = 0;
+                let carouselImageSources = [];
+
+                // Collect image sources from carousel slides if they exist
+                const allCarouselSlidesForModal = document.querySelectorAll('.carousel-slide');
+                allCarouselSlidesForModal.forEach(slide => {
+                    let style = window.getComputedStyle(slide);
+                    let bgImage = style.getPropertyValue('background-image');
+                    if (bgImage && bgImage !== 'none') {
+                        const urlMatch = bgImage.match(/url\(["']?(.*?)["']?\)/);
+                        if (urlMatch && urlMatch[1]) {
+                            carouselImageSources.push(urlMatch[1]);
+                        }
+                    }
+                });
+
+                function showImageInModal(index) {
+                    if (carouselImageSources.length === 0 || !modalImg) return;
+
+                    currentModalImageIndex = index;
+                    // Loop around if index goes out of bounds
+                    if (currentModalImageIndex < 0) {
+                        currentModalImageIndex = carouselImageSources.length - 1;
+                    } else if (currentModalImageIndex >= carouselImageSources.length) {
+                        currentModalImageIndex = 0;
+                    }
+                    modalImg.src = carouselImageSources[currentModalImageIndex];
+                    // if (captionText) { captionText.innerHTML = allCarouselSlidesForModal[currentModalImageIndex].getAttribute('data-caption') || ''; }
+                }
+
+                allCarouselSlidesForModal.forEach((slide, index) => {
+                    slide.onclick = function(){
+                        if (modalImg && carouselImageSources.length > 0) {
+                            modal.style.display = "flex"; // Use flex for centering
+                            showImageInModal(index);
+                        }
+                    }
+                });
+
+                if (prevModalButton) {
+                    prevModalButton.onclick = function() { showImageInModal(currentModalImageIndex - 1); }
+                }
+                if (nextModalButton) {
+                    nextModalButton.onclick = function() { showImageInModal(currentModalImageIndex + 1); }
+                }
+
+                const closeModalButton = document.querySelector(".close-modal");
+                if (closeModalButton) {
+                    closeModalButton.onclick = function() { modal.style.display = "none"; }
+                }
+
+                window.onclick = function(event) {
+                    if (event.target == modal) { modal.style.display = "none"; }
+                }
+
+                document.addEventListener('keydown', function(event) {
+                    if (modal.style.display === "flex") { // Check if modal is active
+                        if (event.key === "ArrowLeft" && prevModalButton) prevModalButton.click();
+                        else if (event.key === "ArrowRight" && nextModalButton) nextModalButton.click();
+                        else if (event.key === "Escape" && closeModalButton) closeModalButton.click();
+                    }
+                });
+            }
+        });
+     </script>
+
+</body>
+</html>           event.preventDefault();
                  const currentLang = htmlTag.lang;
                  const newLang = currentLang === 'es' ? 'en' : 'es';
                  setLanguage(newLang);
