@@ -559,10 +559,43 @@ html {
     }
 
     section h2.section-title { font-size: 1.8rem; margin-bottom: 20px; }
-    #about .container-flex { flex-direction: column; }
+    #about .container-flex {
+        flex-direction: column; /* This is correct for stacking content and image */
+        align-items: center;   /* This will center the items in the column, including the image */
+    }
+
+    #about .about-content {
+        order: 2; /* Optional: Puts text content below the image on mobile if desired */
+        text-align: center; /* Optional: Center text content on mobile */
+    }
+
     #about .about-image-placeholder {
-        margin-bottom: 20px; width: 100%; max-width: 250px;
-        height: 250px; align-self: center;
+        display: block; /* Ensure it's a block-level element */
+        order: 1; /* Optional: Puts image above the text content on mobile */
+        width: 80%;     /* Use a percentage for better responsiveness within its container */
+        max-width: 280px; /* Max size, adjust as you like */
+        height: auto;     /* Let height be determined by width and aspect ratio */
+        aspect-ratio: 1 / 1; /* Make it square, adjust if your image is different (e.g., 4/3) */
+        margin: 0 auto 30px auto; /* Center it horizontally and add bottom margin */
+
+        /* Background image properties (should be set inline, but good to have fallbacks/ensure they are not overridden) */
+        background-color: #ccc; /* Fallback color */
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 8px; /* Consistent with desktop */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Consistent with desktop */
+        visibility: visible !important; /* Force visibility if something else is hiding it, use with caution */
+        opacity: 1 !important; /* Force opacity if something else is making it transparent, use with caution */
+    }
+
+    #about h3 { /* Adjust heading alignment if text is centered */
+        text-align: center;
+    }
+    #about ul { /* Adjust list alignment if text is centered */
+       display: inline-block; /* Allows text-align center on parent to work for block element */
+       text-align: left; /* Keep list items left-aligned within the centered block */
+       padding-left: 0; /* Reset padding if using inline-block approach */
     }
 
     .project-info h3 { font-size: 1.2rem; }
