@@ -67,7 +67,9 @@
 
     <div id="imageModal" class="modal">
         <span class="close-modal">&times;</span>
+        <a class="prev-modal">&#10094;</a>
         <img class="modal-content" id="modalImage">
+        <a class="next-modal">&#10095;</a>
         <div id="caption"></div>
     </div>
 
@@ -96,7 +98,6 @@
                  } else if (lang === 'es' && titleEs) {
                      titleTag.textContent = titleEs;
                  }
-
 
                  elementsToTranslate.forEach(element => {
                      const textEn = element.getAttribute('data-en');
@@ -133,12 +134,12 @@
 
              // --- Carousel Script ---
              const carouselSlidesContainer = document.querySelector('.carousel-slides');
-             const slides = document.querySelectorAll('.carousel-slide'); // Re-select
-             const intervalTime = 2000;
+             const slides = document.querySelectorAll('.carousel-slide'); // Re-select for this script's scope
+             const intervalTime = 2000; // 2 seconds
              let slideInterval;
              let currentIndex = 0;
 
-             if (carouselSlidesContainer && slides.length > 0) {
+             if (carouselSlidesContainer && slides.length > 0) { // Check if elements exist
                  function moveCarouselTo(index) {
                       currentIndex = index;
                       const offset = -currentIndex * 100;
@@ -162,27 +163,83 @@
                  carouselSlidesContainer.parentElement.addEventListener('mouseleave', () => {
                       slideInterval = setInterval(nextSlide, intervalTime);
                  });
-                 moveCarouselTo(0);
-             } else if (slides.length > 0) {
+
+                  moveCarouselTo(0); // Initialize carousel position
+             } else if (slides.length > 0) { // Only slides exist, not container (should not happen with current HTML)
                  console.warn("Carousel slides found, but container .carousel-slides is missing.");
              } else {
                  console.warn("No slides found for the carousel.");
              }
 
-            // --- Image Modal Script ---
+             // --- Image Modal Script ---
             const modal = document.getElementById("imageModal");
+            if (modal) {
+                modal.style.display = "none";
+            }
             const modalImg = document.getElementById("modalImage");
+            // Uncommented and selected the new modal buttons
+            const prevModalButton = document.querySelector(".prev-modal");
+            const nextModalButton = document.querySelector(".next-modal");
+            // const captionText = document.getElementById("caption"); // Uncomment if using captions
 
-            document.querySelectorAll('.carousel-slide').forEach(slide => {
-                slide.onclick = function(){
-                    if (modal && modalImg) {
-                        modal.style.display = "block";
-                        let style = window.getComputedStyle(this);
-                        let bgImage = style.getPropertyValue('background-image');
-                        modalImg.src = bgImage.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+            let currentModalImageIndex = 0;
+            let carouselImageSources = [];
+
+            // Collect all carousel image sources on page load
+            // This assumes all .carousel-slide elements are for the main carousel on the page
+            const allCarouselSlides = document.querySelectorAll('.carousel-slide');
+            allCarouselSlides.forEach(slide => {
+                let style = window.getComputedStyle(slide);
+                let bgImage = style.getPropertyValue('background-image');
+                if (bgImage && bgImage !== 'none') {
+                    // Extract URL from background-image style
+                    const urlMatch = bgImage.match(/url\(["']?(.*?)["']?\)/);
+                    if (urlMatch && urlMatch[1]) {
+                        carouselImageSources.push(urlMatch[1]);
                     }
                 }
             });
+
+            function showImageInModal(index) {
+                if (carouselImageSources.length === 0 || !modalImg) return;
+                currentModalImageIndex = index;
+                modalImg.src = carouselImageSources[currentModalImageIndex];
+                // Example for caption:
+                // const currentSlideElement = allCarouselSlides[currentModalImageIndex];
+                // if (captionText && currentSlideElement) {
+                //     captionText.innerHTML = currentSlideElement.getAttribute('data-caption') || '';
+                // }
+            }
+
+            allCarouselSlides.forEach((slide, index) => {
+                slide.onclick = function(){
+                    if (modal && modalImg && carouselImageSources.length > 0) {
+                        modal.style.display = "block";
+                        showImageInModal(index);
+                    }
+                }
+            });
+
+            // Added click handlers for the new modal buttons
+            if (prevModalButton) {
+                prevModalButton.onclick = function() {
+                    currentModalImageIndex--;
+                    if (currentModalImageIndex < 0) {
+                        currentModalImageIndex = carouselImageSources.length - 1;
+                    }
+                    showImageInModal(currentModalImageIndex);
+                }
+            }
+
+            if (nextModalButton) {
+                nextModalButton.onclick = function() {
+                    currentModalImageIndex++;
+                    if (currentModalImageIndex >= carouselImageSources.length) {
+                        currentModalImageIndex = 0;
+                    }
+                    showImageInModal(currentModalImageIndex);
+                }
+            }
 
             const closeModalButton = document.querySelector(".close-modal");
             if (closeModalButton && modal) {
@@ -196,7 +253,20 @@
                     modal.style.display = "none";
                 }
             }
-         });
+
+            // Optional: Add keyboard navigation for arrows when modal is open
+            document.addEventListener('keydown', function(event) {
+                if (modal && modal.style.display === "block") {
+                    if (event.key === "ArrowLeft") {
+                        if (prevModalButton) prevModalButton.click();
+                    } else if (event.key === "ArrowRight") {
+                        if (nextModalButton) nextModalButton.click();
+                    } else if (event.key === "Escape") {
+                        if (closeModalButton) closeModalButton.click();
+                    }
+                }
+            });
+        });
      </script>
 
 </body>

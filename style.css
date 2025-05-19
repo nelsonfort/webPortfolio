@@ -108,6 +108,7 @@ nav ul li a:hover {
     z-index: 1;
 }
 
+/* MODIFIED FOR IMAGE FIT */
 .cover-image-placeholder {
     position: absolute;
     top: 0;
@@ -212,15 +213,25 @@ section h2.section-title::after {
     min-width: 300px;
 }
 
+/* MODIFIED FOR IMAGE FIT */
+/* #about .about-image-placeholder {
+    flex: 1;
+    min-width: 250px;
+    min-height: 350px;
+   
+    background: #ccc url('https://via.placeholder.com/400x350/cccccc/969696.png?text=About+Me+Image+(400x350)') center center/contain no-repeat;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #ccc; 
+} */
+
 #about .about-image-placeholder {
     flex: 1;
     min-width: 250px;
     height: 350px;
-    /* Placeholder URL for initial load, actual image via inline style in HTML */
-    background: #ccc url('https://via.placeholder.com/400x350/cccccc/969696.png?text=About+Me+Image+(400x350)') center center/contain no-repeat;
+    background: #ccc url('https://via.placeholder.com/400x350/cccccc/969696.png?text=Imagen+Personal+(400x350)') center center/cover no-repeat;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    background-color: #ccc; /* Fill color if image is contained and smaller */
 }
 
 #about h3 {
@@ -249,7 +260,7 @@ section h2.section-title::after {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly smaller min size */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
 
@@ -261,8 +272,8 @@ section h2.section-title::after {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    text-decoration: none; /* Remove underline from link if item is a link */
-    color: inherit; /* Inherit text color */
+    text-decoration: none;
+    color: inherit;
 }
 
 .project-item:hover {
@@ -270,10 +281,11 @@ section h2.section-title::after {
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
+/* MODIFIED FOR IMAGE FIT */
 .project-image-placeholder {
     width: 100%;
-    height: 200px; /* Reduced height for overview */
-    background-color: #ddd; /* This will be visible if image is contained */
+    height: 200px;
+    background-color: #ddd;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -292,16 +304,16 @@ section h2.section-title::after {
 }
 
 .project-info h3 {
-    font-size: 1.3rem; /* Reduced size */
+    font-size: 1.3rem;
     color: #00aaff;
     margin-bottom: 10px;
 }
 
 .project-info p {
-    font-size: 0.9rem; /* Reduced size */
+    font-size: 0.9rem;
     margin-bottom: 10px;
-    display: -webkit-box; /* For truncating text */
-    -webkit-line-clamp: 3; /* Show max 3 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -310,13 +322,13 @@ section h2.section-title::after {
 .project-info ul {
     list-style: none;
     padding-left: 0;
-    font-size: 0.9rem; /* Reduced size */
+    font-size: 0.9rem;
 }
 .project-info ul li {
-    margin-bottom: 5px; /* Reduced margin */
+    margin-bottom: 5px;
     padding-left: 20px;
     position: relative;
-    font-size: 0.9rem; /* Reduced size */
+    font-size: 0.9rem;
 }
 .project-info ul li::before {
     content: '•';
@@ -331,10 +343,10 @@ section h2.section-title::after {
 
 /* Project Detail Page Specific Styles */
 .project-detail-content {
-    max-width: 900px; /* Max width for content */
+    max-width: 900px;
     margin: auto;
     padding: 0 20px;
-    text-align: center; /* Center title */
+    text-align: center;
 }
 .project-detail-content h2 {
      font-size: 2.5rem;
@@ -346,50 +358,51 @@ section h2.section-title::after {
 .carousel-container {
     position: relative;
     width: 100%;
-    max-width: 800px; /* Max width for the carousel */
-    margin: 20px auto 30px auto; /* Center and add margin */
+    max-width: 800px;
+    margin: 20px auto 30px auto;
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    aspect-ratio: 16 / 9; /* Maintain aspect ratio */
-    background-color: #eee; /* Placeholder background if images are smaller */
+    aspect-ratio: 16 / 9;
+    background-color: #eee;
 }
 
 .carousel-slides {
     display: flex;
     width: 100%;
     height: 100%;
-    transition: transform 0.5s ease-in-out; /* Smooth transition */
+    transition: transform 0.5s ease-in-out;
 }
 
+/* MODIFIED FOR IMAGE FIT & CLICKABLE CURSOR */
 .carousel-slide {
-    min-width: 100%; /* Each slide takes full width */
+    min-width: 100%;
     height: 100%;
     background-size: contain; /* CHANGED from cover to contain */
     background-position: center;
     background-repeat: no-repeat; /* Added */
-    display: flex; /* Center placeholder text/image if needed */
+    display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff; /* For any text overlay if image is missing */
-    font-size: 2em; /* For any text overlay */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* For any text overlay */
+    color: #fff;
+    font-size: 2em;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     cursor: pointer; /* Make slides clickable for modal */
 }
 /* If using img tags inside carousel-slide */
 .carousel-slide img {
-    display: block; /* Ensure img behaves well */
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: contain; /* CHANGED from cover to contain */
-    pointer-events: none; /* Prevent image drag if slide itself handles click */
+    pointer-events: none;
 }
 
 
 /* Project Detail Description */
 .project-detail-description {
     margin-top: 30px;
-    text-align: left; /* Left-align description text */
+    text-align: left;
     font-size: 1.1rem;
     line-height: 1.8;
 }
@@ -479,42 +492,50 @@ footer p:last-child {
     opacity: 0.8;
 }
 
-/* Modal (Lightbox) Styles - ADDED */
+/* --- START: MODAL STYLES (Including ARROWS) --- */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 2000; /* Sit on top */
-    padding-top: 50px; /* Location of the box */
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    /* Adjusted padding-top to give more space at the top */
+    padding-top: 20px;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+    /* Added display flex and align-items/justify-content to center modal content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Stack image and caption vertically */
 }
 
 .modal-content {
     margin: auto;
     display: block;
-    width: 80%;
-    max-width: 700px; /* Adjusted for better viewing */
-    max-height: 85vh; /* Ensure it fits viewport height */
-    object-fit: contain; /* Ensure the full image is visible */
+    /* Removed fixed max-width and max-height */
+    width: 95%; /* Allow image to take up more width */
+    height: 95%; /* Allow image to take up more height */
+    max-width: 95%; /* Ensure it doesn't exceed viewport width */
+    max-height: 95vh; /* Ensure it doesn't exceed viewport height */
+    object-fit: contain;
+    /* Optional: adjust max-width if arrows overlap too much on narrow images */
+    /* max-width: calc(100% - 120px); /* Leaves 60px on each side for arrows */
 }
 
-#caption { /* If you decide to use captions */
+#caption {
     margin: 10px auto 0;
     display: block;
-    width: 80%;
-    max-width: 700px;
+    width: 95%; /* Match modal-content width */
+    max-width: 95%; /* Match modal-content max-width */
     text-align: center;
     color: #ccc;
     padding: 10px 0;
-    height: auto; /* Auto height for caption */
+    height: auto;
 }
 
-/* Close Button */
 .close-modal {
     position: absolute;
     top: 15px;
@@ -523,6 +544,7 @@ footer p:last-child {
     font-size: 40px;
     font-weight: bold;
     transition: 0.3s;
+    z-index: 2002; /* Ensure close button is on top */
 }
 
 .close-modal:hover,
@@ -532,7 +554,43 @@ footer p:last-child {
     cursor: pointer;
 }
 
-/* Add Animation */
+/* Modal Navigation Arrows */
+.prev-modal, .next-modal {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    /* Adjusted margin-top to vertically center with the entire modal content area */
+    margin-top: 0;
+    transform: translateY(-50%); /* Use transform for precise vertical centering */
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.3s ease;
+    border-radius: 0 3px 3px 0; /* Default for next, prev will override */
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: rgba(0,0,0,0.3);
+    /* Added z-index to ensure arrows are above the image */
+    z-index: 2001; /* Higher than modal content */
+}
+
+.next-modal {
+    right: 10px; /* Positioned from the right edge of the modal */
+    border-radius: 3px 0 0 3px;
+}
+
+.prev-modal {
+    left: 10px; /* Positioned from the left edge of the modal */
+    border-radius: 3px 0 0 3px; /* Corrected: to match .next-modal but flipped */
+}
+
+
+.prev-modal:hover, .next-modal:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
 .modal-content, #caption {
     -webkit-animation-name: zoom;
     -webkit-animation-duration: 0.6s;
@@ -549,6 +607,7 @@ footer p:last-child {
     from {transform:scale(0)}
     to {transform:scale(1)}
 }
+/* --- END: MODAL STYLES --- */
 
 
 /* Responsive */
@@ -580,10 +639,10 @@ footer p:last-child {
 
 
     #cover h2 {
-        font-size: 2rem; /* Adjusted for smaller screens */
+        font-size: 2rem;
     }
     #cover p {
-        font-size: 1rem; /* Adjusted for smaller screens */
+        font-size: 1rem;
     }
 
     .container {
@@ -591,30 +650,38 @@ footer p:last-child {
     }
 
     section {
-        padding: 40px 0; /* Reduced padding */
+        padding: 40px 0;
     }
      .project-detail-section {
-         padding-top: 80px; /* Adjust padding for fixed nav on mobile */
-         padding-bottom: 40px; /* Adjust padding below content */
+         padding-top: 80px;
+         padding-bottom: 40px;
      }
 
     section h2.section-title {
-        font-size: 1.8rem; /* Adjusted size */
-        margin-bottom: 20px; /* Adjusted margin */
+        font-size: 1.8rem;
+        margin-bottom: 20px;
     }
 
     #about .container-flex {
         flex-direction: column;
     }
+    /* MODIFIED FOR IMAGE FIT (MOBILE) */
+    /* #about .about-image-placeholder {
+        margin-bottom: 20px;
+        width: 100%;
+        max-width: 250px;
+        height: 250px;
+        background: #ccc url('images/about-me.jpg') center center/contain no-repeat; 
+        align-self: center;
+        background-color: #ccc;
+    } */
     #about .about-image-placeholder {
         margin-bottom: 20px;
         width: 100%;
         max-width: 250px; /* Adjusted size */
         height: 250px; /* Adjusted size */
-        /* Ensure this uses contain as well if overridden for mobile */
-        background: #ccc url('images/about-me.jpg') center center/contain no-repeat; /* Updated path and size */
+        background: #ccc url('images/about-me.jpg') center center/cover no-repeat; /* Updated path */
         align-self: center;
-        background-color: #ccc; /* Fill color if image is contained and smaller */
     }
 
     .project-grid {
@@ -631,11 +698,11 @@ footer p:last-child {
     }
 
     .project-detail-content h2 {
-        font-size: 2rem; /* Adjusted for mobile */
+        font-size: 2rem;
         margin-bottom: 20px;
     }
      .project-detail-description {
-         font-size: 1rem; /* Adjusted for mobile */
+         font-size: 1rem;
      }
      .project-detail-description h3 {
          font-size: 1.4rem;
@@ -643,9 +710,19 @@ footer p:last-child {
 
     /* Modal Content on smaller screens */
     .modal-content {
-        width: 95%;
+        width: 95%; /* Adjusted for smaller screens to give more space for arrows */
         max-width: 95%;
     }
+
+    /* Modal Arrows on smaller screens */
+    .prev-modal, .next-modal {
+        font-size: 18px;
+        padding: 12px;
+        margin-top: 0; /* Keep centered with transform */
+        transform: translateY(-50%);
+    }
+    .next-modal { right: 5px; }
+    .prev-modal { left: 5px; }
 }
 
 /* Smooth Scroll & Nav Offset */
